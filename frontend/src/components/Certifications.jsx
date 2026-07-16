@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Award, ShieldCheck, CheckCircle2, ArrowUpRight } from 'lucide-react';
+import { Award, ArrowUpRight } from 'lucide-react';
 
 const fallbackCertifications = [
   {
@@ -8,7 +8,7 @@ const fallbackCertifications = [
     issuer: 'GeeksforGeeks',
     credentialId: 'GFG-PY-2024',
     date: 'Issued 2024',
-    verifyLink: '#',
+    verifyLink: '/python_course_certificate.pdf',
     color: 'from-amber-500/10 to-orange-500/10 hover:border-amber-500/30'
   },
   {
@@ -16,7 +16,7 @@ const fallbackCertifications = [
     issuer: 'NPTEL',
     credentialId: 'NPTEL-SNA-2024',
     date: 'Issued 2024',
-    verifyLink: '#',
+    verifyLink: '/social_network_analysis_certificate.pdf',
     color: 'from-blue-500/10 to-cyan-500/10 hover:border-blue-500/30'
   },
   {
@@ -24,7 +24,7 @@ const fallbackCertifications = [
     issuer: 'Industry Certification Program',
     credentialId: 'ICP-AI-2024',
     date: 'Issued 2024',
-    verifyLink: '#',
+    verifyLink: '/app_development_ai_essential_skills_certificate.pdf',
     color: 'from-purple-500/10 to-pink-500/10 hover:border-purple-500/30'
   },
   {
@@ -32,7 +32,7 @@ const fallbackCertifications = [
     issuer: 'Professional Bootcamp',
     credentialId: 'JFS-REACT-AI',
     date: 'Issued 2025',
-    verifyLink: '#',
+    verifyLink: '/java_full_stack_react_ai_certificate.pdf',
     color: 'from-emerald-500/10 to-teal-500/10 hover:border-emerald-500/30'
   }
 ];
@@ -95,7 +95,14 @@ export default function Certifications({ onPreviewDoc, refreshTrigger }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`glass-card rounded-2xl p-6 border border-white/5 hover:border-accentPurple/30 transition-all duration-300 relative group flex gap-5 items-start bg-gradient-to-br ${cert.color}`}
+              onClick={() => {
+                if (cert.verifyLink && cert.verifyLink !== '#') {
+                  onPreviewDoc(cert.verifyLink, cert.title);
+                }
+              }}
+              className={`glass-card rounded-2xl p-6 border border-white/5 hover:border-accentPurple/30 transition-all duration-300 relative group flex gap-5 items-start bg-gradient-to-br ${cert.color} ${
+                cert.verifyLink && cert.verifyLink !== '#' ? 'cursor-pointer hover:scale-[1.02]' : ''
+              }`}
             >
               
               {/* Badge Icon */}
@@ -110,7 +117,8 @@ export default function Certifications({ onPreviewDoc, refreshTrigger }) {
                     {cert.title}
                   </h3>
                   <button
-                    onClick={() => {
+                    onClick={(e) => {
+                      e.stopPropagation();
                       if (cert.verifyLink && cert.verifyLink !== '#') {
                         onPreviewDoc(cert.verifyLink, cert.title);
                       }
@@ -122,22 +130,10 @@ export default function Certifications({ onPreviewDoc, refreshTrigger }) {
                   </button>
                 </div>
 
+
                 <p className="text-sm font-semibold text-neutral-700 dark:text-neutral-300 mt-1">
                   {cert.issuer}
                 </p>
-
-                {/* Sub details */}
-                <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs font-mono text-neutral-500 dark:text-neutral-400 mt-3 border-t border-neutral-200 dark:border-white/5 pt-3">
-                  <span className="flex items-center gap-1">
-                    <ShieldCheck className="w-3.5 h-3.5 text-accentBlue" />
-                    ID: {cert.credentialId}
-                  </span>
-                  <span>•</span>
-                  <span className="flex items-center gap-1">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
-                    {cert.date}
-                  </span>
-                </div>
               </div>
 
             </motion.div>

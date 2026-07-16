@@ -21,8 +21,7 @@ const projects = [
       { name: 'CSS3', icon: FaCss3Alt, color: '#1572B6' },
       { name: 'JavaScript', icon: FaJs, color: '#F7DF1E' }
     ],
-    github: 'https://github.com/kesiyasaji781',
-    demo: '#',
+    github: 'https://github.com/kesiyasaji781/habit-tracker.git',
     team: false,
     gradient: 'from-purple-500/10 to-indigo-500/10 hover:border-purple-500/30'
   },
@@ -42,8 +41,8 @@ const projects = [
       { name: 'FastAPI', icon: SiFastapi, color: '#009688' },
       { name: 'Git & GitHub', icon: FaGitAlt, color: '#F05032' }
     ],
-    github: 'https://github.com/kesiyasaji781',
-    demo: '#',
+    githubFrontend: 'https://github.com/derindevis/JobPortal_Frontend.git',
+    githubBackend: 'https://github.com/derindevis/JobPortal_Backend.git',
     team: true,
     gradient: 'from-blue-500/10 to-emerald-500/10 hover:border-blue-500/30'
   }
@@ -149,23 +148,51 @@ export default function Projects() {
                 </div>
 
                 {/* Actions */}
-                <div className="flex gap-4">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-medium border border-neutral-300 dark:border-white/10 bg-neutral-100/50 dark:bg-white/5 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-white/10 transition-colors duration-200"
-                  >
-                    <FaGithub className="w-4 h-4" />
-                    Code
-                  </a>
-                  <a
-                    href={project.demo}
-                    className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-medium text-white bg-gradient-to-r from-accentPurple to-accentBlue shadow-md shadow-accentPurple/15 hover:shadow-accentPurple/25 hover:scale-105 active:scale-95 transition-all duration-200"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    Live Demo
-                  </a>
+                <div className="flex gap-3 flex-wrap">
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-sm font-medium border border-neutral-300 dark:border-white/10 bg-neutral-100/50 dark:bg-white/5 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-white/10 transition-colors duration-200 min-w-[110px]"
+                    >
+                      <FaGithub className="w-4 h-4" />
+                      Code
+                    </a>
+                  )}
+                  {project.githubFrontend && (
+                    <a
+                      href={project.githubFrontend}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl text-xs font-semibold border border-neutral-300 dark:border-white/10 bg-neutral-100/50 dark:bg-white/5 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-white/10 transition-colors duration-200 min-w-[110px]"
+                    >
+                      <FaGithub className="w-3.5 h-3.5" />
+                      Frontend Code
+                    </a>
+                  )}
+                  {project.githubBackend && (
+                    <a
+                      href={project.githubBackend}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl text-xs font-semibold border border-neutral-300 dark:border-white/10 bg-neutral-100/50 dark:bg-white/5 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-white/10 transition-colors duration-200 min-w-[110px]"
+                    >
+                      <FaGithub className="w-3.5 h-3.5" />
+                      Backend Code
+                    </a>
+                  )}
+                  {project.demo && (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-sm font-medium text-white bg-gradient-to-r from-accentPurple to-accentBlue shadow-md shadow-accentPurple/15 hover:shadow-accentPurple/25 hover:scale-105 active:scale-95 transition-all duration-200 min-w-[110px]"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      Live Demo
+                    </a>
+                  )}
                 </div>
               </div>
 
