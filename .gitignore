@@ -35,3 +35,4 @@ env/
 .gemini/
 .agents/
 antigravity-ide/
+.vite/
